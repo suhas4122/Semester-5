@@ -1,0 +1,12 @@
+//18CS10048
+//Sahil Jindal
+
+1. (iv) 1
+2. (iv) 0 0 0 1
+3A. (iii) 5.3
+3B. (i) 9.1
+4. (vi) none of these
+5. (vi) none of these
+6. (iv) More instruction count, less CPI, higher chip yield, better performance; 
+7. (ii) It is a register in the CPU that contains the address of the memory location where the next instruction is located
+8. (i) 1.75 * 10-6 

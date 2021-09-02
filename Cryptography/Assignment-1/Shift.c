@@ -1,36 +1,53 @@
 // Shift Cipher
 #include <stdio.h>
-#define CAPACITY 100
+#define MAXIMUM 100
 
-void shift_encrypt(char *plainTxt, int key, char *encrypTxt){
-    int i = 0;
-    while (plainTxt[i] != '\0'){
-        int tmp = ((((int)plainTxt[i]) + key - (int)('a'))%26);
-        encrypTxt[i++] = (char)(tmp + 'a');
-    }
-    encrypTxt[i++] = '\0';
-}
-
-void shift_decrypt(char *encrypTxt, int key, char *plainTxt){
-    int i = 0;
-    while (encrypTxt[i] != '\0'){
-        int tmp = (((((int)encrypTxt[i]) - key - (int)('a'))%26) + 26)%26;
-        plainTxt[i++] = (char)(tmp + 'a');
-    }
-    plainTxt[i++] = '\0';
-}
+void encrypt(char *pt, int key, char *et);
+void decrypt(char *et, int key, char *pt);
 
 int main(){
-    char plainTxt[CAPACITY];
-    printf("Enter the plain text to be encrypted: \n");
-    scanf("%s", plainTxt);
+    char pt[MAXIMUM];
+    printf("Enter the message to be encrypted (can include spaces) : ");
+    scanf("%[^\n]", pt);
     int key;
-    printf("Enter the key: \n");
+    printf("Enter the key : ");
     scanf("%d", &key);
-    char encrypTxt[CAPACITY];
-    shift_encrypt(plainTxt, key, encrypTxt);
-    printf("Encrypted String: %s \n", encrypTxt);
-    char decryptTxt[CAPACITY];
-    shift_decrypt(encrypTxt, key, decryptTxt);
-    printf("Decrypted string: %s \n", decryptTxt);
+    char et[MAXIMUM];
+    encrypt(pt, key, et);
+    printf("Encrypted String : %s \n", et);
+    char dt[MAXIMUM];
+    decrypt(et, key, dt);
+    printf("Decrypted string : %s \n", dt);
+}
+
+void encrypt(char *pt, int key, char *et){
+    int i = 0;
+    while (pt[i] != '\0'){
+        if(pt[i] >= 'a' && pt[i] <= 'z'){
+            int tmp = ((((int)pt[i]) + key - (int)('a'))%26);
+            et[i++] = (char)(tmp + 'a');
+        }else if(pt[i] >= 'A' && pt[i] <= 'Z'){
+            int tmp = ((((int)pt[i]) + key - (int)('A'))%26);
+            et[i++] = (char)(tmp + 'A');
+        }else{
+            et[i++] = pt[i] + key;
+        }
+    }
+    et[i++] = '\0';
+}
+
+void decrypt(char *et, int key, char *pt){
+    int i = 0;
+    while (et[i] != '\0'){
+        if(et[i] >= 'a' && et[i] <= 'z'){
+            int tmp = (((((int)et[i]) - key - (int)('a'))%26) + 26)%26;
+            pt[i++] = (char)(tmp + 'a');
+        }else if(et[i] >= 'A' && et[i] <= 'Z'){
+            int tmp = (((((int)et[i]) - key - (int)('A'))%26) + 26)%26;
+            pt[i++] = (char)(tmp + 'A');
+        }else{
+            pt[i++] = et[i] - key;
+        }
+    }
+    pt[i++] = '\0';
 }

@@ -194,20 +194,23 @@ int readFlt(float *f){
         if(buff[i] == '-'){
             sign = 1;
             i++;
-        }
-        if(buff[i] == '+'){
+        }else if(buff[i] == '+'){
             i++;
         }
-        while(i < len){
-            char read = buff[i];
-            if(read <= '9' && read >= '0'){
-                num = num*10 + read - '0';
-            }else if(read == ' '){
-                break;
-            }else{
-                return ERR;
+        if(buff[i] <= '9' && buff[i] >=0){
+            while(i < len){
+                char read = buff[i];
+                if(read <= '9' && read >= '0'){
+                    num = num*10 + read - '0';
+                }else if(read == ' '){
+                    break;
+                }else{
+                    return ERR;
+                }
+                i++;
             }
-            i++;
+        }else{
+            return ERR;
         }
         if(sign == 0){
             while(num--){

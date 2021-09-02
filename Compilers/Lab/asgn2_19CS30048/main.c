@@ -63,15 +63,19 @@ int main(){
 	s = readInt(&n);
 	printStr((char*)"Return value (1 for Ok, 0 for ERR) : ");
 	printInt(s);
-	printStr((char*)"\nTest integer #1 : ");
-	printInt(n);
+	if(s){
+		printStr((char*)"\nTest integer #1 : ");
+		printInt(n);
+	}
 	printStr((char*)"\n\n");
 	printStr((char*)"Enter an integer (Test integer #2) : ");
 	s = readInt(&n);
 	printStr((char*)"Return value (1 for Ok, 0 for ERR) : ");
 	printInt(s);
-	printStr((char*)"\nTest integer #2 : ");
-	printInt(n);
+	if(s){
+		printStr((char*)"\nTest integer #2 : ");
+		printInt(n);
+	}
 	printStr((char*)"\n\n");
 
 	printStr("#5 ---------- Test for readFlt() ----------\n\n");
@@ -81,14 +85,18 @@ int main(){
 	s = readFlt(&f);
 	printStr((char*)"Return value (1 for Ok, 0 for ERR) : ");
 	printInt(s);
-	printStr((char*)"\nTest float #1 : ");
-	printFlt(f);
+	if(s){
+		printStr((char*)"\nTest float #1 : ");
+		printFlt(f);
+	}
 	printStr((char*)"\n\n");
 	printStr((char*)"Enter an float (Test float #2) : ");
 	s = readFlt(&f);
 	printStr((char*)"Return value (1 for Ok, 0 for ERR) : ");
 	printInt(s);
-	printStr((char*)"\nTest float #2 : ");
-	printFlt(f);
+	if(s){
+		printStr((char*)"\nTest float #2 : ");
+		printFlt(f);
+	}
 	printStr((char*)"\n\n********* THANK YOU *********\n\n");
 }

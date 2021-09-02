@@ -1,44 +1,47 @@
 // Permutation Cipher
 #include <stdio.h>
+#include <string.h>
 #define CAPACITY 100
 
-void permutation_encrypt(char *plainTxt, int *key, int m, char *encyptTxt){
-    int txt_len = 0;
-    while (plainTxt[txt_len] != '\0') txt_len++;
+void encrypt(char *pt, int *key, int m, char *et);
+void decrypt(char *et, int *key, int m, char *pt);
+
+int main(){
+    char pt[CAPACITY];
+    printf("Enter the message to be encrypted : \n");
+    scanf("%[^\n]", pt);
+    int m = strlen(pt);
+    int key[m];
+    printf("Enter a space seperated permutation of numbers from 1 to %d :\n", m);
+    for (int i = 0; i < m; i++){
+        scanf("%d", &key[i]);
+    }
+    char et[CAPACITY];
+    encrypt(pt, key, m, et);
+    printf("Encrypted message: %s \n", et);
+    char dt[CAPACITY];
+    decrypt(et, key, m, dt);
+    printf("Decrypted message: %s \n", dt);
+}
+
+void encrypt(char *pt, int *key, int m, char *et){
+    int len = 0;
+    while (pt[len] != '\0') len++;
     int j = 0;
-    for (int i=0;i<txt_len;i+=m){
-        for (int j=0;j<m;j++){
+    for (int i = 0; i < len; i += m){
+        for (int j = 0; j < m; j++){
             int tmp = key[j] - 1;
-            if (i+j<txt_len) encyptTxt[i + tmp] = plainTxt[i + j];
-            else encyptTxt[i + tmp] = 'z';
+            if (i + j < len) et[i + tmp] = pt[i + j];
+            else et[i + tmp] = 'z';
         }
     }
 }
 
-void permutation_decrypt(char *encrypTxt, int *key, int m, char *plainTxt){
-    int inv_key[m];
-    for (int i=0;i<m;i++){
-        inv_key[key[i] - 1] = i+1;
+void decrypt(char *et, int *key, int m, char *pt){
+    int ik[m];
+    for (int i = 0; i < m; i++){
+        ik[key[i] - 1] = i + 1;
     }
-    permutation_encrypt(encrypTxt, inv_key, m, plainTxt);
-}
-
-int main(){
-    char plainTxt[CAPACITY];
-    printf("Enter the plain text to be encrypted: \n");
-    scanf("%s", plainTxt);
-    int m;
-    printf("Enter length of key array: \n");
-    scanf("%d", &m);
-    int key[CAPACITY];
-    for (int i=0;i<m;i++){
-        printf("Enter the array number: \n");
-        scanf("%d", &key[i]);
-    }
-    char encrypTxt[CAPACITY];
-    permutation_encrypt(plainTxt, key, m, encrypTxt);
-    printf("Encrypted String: %s \n", encrypTxt);
-    char decryptTxt[CAPACITY];
-    permutation_decrypt(encrypTxt, key, m, decryptTxt);
-    printf("Decrypted string: %s \n", decryptTxt);
+    encrypt(et, ik, m, pt);
+    pt[m] = '\0';
 }
