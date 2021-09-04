@@ -7,10 +7,10 @@ void decrypt(char *et, int key, char *pt);
 
 int main(){
     char pt[MAXIMUM];
-    printf("Enter the message to be encrypted (can include spaces) : ");
+    printf("Enter the message to be encrypted (any string) : ");
     scanf("%[^\n]", pt);
     int key;
-    printf("Enter the key : ");
+    printf("Enter the key (any non-zero integer) : ");
     scanf("%d", &key);
     char et[MAXIMUM];
     encrypt(pt, key, et);

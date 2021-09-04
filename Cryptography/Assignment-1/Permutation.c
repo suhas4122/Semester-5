@@ -8,11 +8,11 @@ void decrypt(char *et, int *key, int m, char *pt);
 
 int main(){
     char pt[CAPACITY];
-    printf("Enter the message to be encrypted : \n");
+    printf("Enter the message to be encrypted : ");
     scanf("%[^\n]", pt);
     int m = strlen(pt);
     int key[m];
-    printf("Enter a space seperated permutation of numbers from 1 to %d :\n", m);
+    printf("Enter a space seperated permutation of numbers from 1 to %d : ", m);
     for (int i = 0; i < m; i++){
         scanf("%d", &key[i]);
     }

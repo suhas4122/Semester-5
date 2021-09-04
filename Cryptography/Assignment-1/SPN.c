@@ -14,7 +14,7 @@ int encrypt(int cp);
 
 int main(void){
     int cp, pt = 0x26b7;          
-    printf("pt Text (HEX Code) : %0x\n", pt);
+    printf("Using default plaintext and key (can be changed in code)\nPlain Text (HEX Code) : %0x\n", pt);
     cp = encrypt(pt);
     printf("Encrypted String (HEX Code) : %0x\n", cp);
     pt = decrypt(cp);
