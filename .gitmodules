@@ -2,5 +2,5 @@
 	path = COAA-Lab-Sem-5
 	url = git@github.com:suhas4122/COAA-Lab-Sem-5.git
 [submodule "COA/COAA-Lab-Sem-5"]
-	path = COA/COA-Lab
+	path = COA/COAA-Lab-Sem-5/COA-Lab
 	url = git@github.com:suhas4122/COAA-Lab-Sem-5.git
