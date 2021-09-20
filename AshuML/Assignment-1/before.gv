@@ -1,0 +1,10 @@
+digraph {
+	node [shape=box]
+	0 [label="Glucose < 129.5"]
+	1 [label="Outcome
+No"]
+	0 -> 1 [label=True]
+	2 [label="Outcome
+Yes"]
+	0 -> 2 [label=False]
+}
