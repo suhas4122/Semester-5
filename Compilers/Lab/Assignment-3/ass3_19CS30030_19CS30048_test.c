@@ -34,7 +34,9 @@ int main()
 	char c = 'y';
  	string s = "This is a test for string literal \n \t";
 
-	/* Test for multi line comment */
+	/* Test for multi 
+	hey suhas
+	line comment */
 	// Test for single line comment 
 
 	int pos = binarySearch(array, 0, 9, 66);

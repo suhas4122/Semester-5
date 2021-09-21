@@ -56,7 +56,7 @@ MULTI_LINE_COMMENT			"/*"[^"*"]*"*"("*"|([^"/*"]*[^"*"]*"*"))*"/"
 SINGLE_LINE_COMMENT			"//"[^("\n")]*
 
 /* WHITESPACE */
-SPACES                       [\t\v\n\f]
+SPACES                       [ \t\v\n\f]
 
 %%
 
