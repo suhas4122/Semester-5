@@ -13,22 +13,20 @@
 KEYWORD  "break"|"case"|"char"|"const"|"continue"|"default"|"do"|"double"|"else"|"extern"|"float"|"for"|"goto"|"if"|"int"|"inline"|"long"|"return"|"restrict"|"short"|"sizeof"|"static"|"struct"|"switch"|"typedef"|"union"|"void"|"volatile"|"while"
 
 /*Identifiers*/
-
-DIGIT					                [0-9]
-IDENTIFIER_NONDIGIT 			        [a-zA-Z_]
-IDENTIFIER 				                {IDENTIFIER_NONDIGIT}({IDENTIFIER_NONDIGIT}|{DIGIT})*
+DIGIT					            [0-9]
+IDENTIFIER_NONDIGIT 			    [a-zA-Z_]
+IDENTIFIER_NONDIGIT					{IDENTIFIER_NONDIGIT}({IDENTIFIER_NONDIGIT}|{DIGIT})*
 
 /*Constants*/
-
-CONSTANT 				                {INTEGER_CONSTANT}|{FLOATING_CONSTANT}|{CHARACTER_CONSTANT}
+CONSTANT 				          	{INTEGER_CONSTANT}|{FLOATING_CONSTANT}|{CHARACTER_CONSTANT}
 
 /*Integer Constants*/
-NONZERO_DIGIT 				            [1-9]
-INTEGER_CONSTANT			            {NONZERO_DIGIT}|{DIGIT}* 	
+NONZERO_DIGIT 				        [1-9]
+INTEGER_CONSTANT					{NONZERO_DIGIT}|{DIGIT}* 	
 
 /*Floating Constants*/
-SIGN 					                "+"|"-"
-SIGN_OPT				                {SIGN}?
+SIGN 					            "+"|"-"
+SIGN_OPT				            {SIGN}?
 DIGIT_SEQUENCE  			        {DIGIT}({DIGIT})*
 DIGIT_SEQUENCE_OPT			        {DIGIT_SEQUENCE}?
 EXPONENT_PART 				        "e"{SIGN_OPT}{DIGIT_SEQUENCE}|"E"{SIGN_OPT}{DIGIT_SEQUENCE}
@@ -49,11 +47,9 @@ S_CHAR_SEQUENCE_OPT 			    {S_CHAR_SEQUENCE}?
 STRING_LITERAL 				        "\""{S_CHAR_SEQUENCE_OPT}"\""
 
 /*Punctuators*/
-
 PUNCTUATOR 				            "++"|"/"|"?"|"="|","|"["|"]"|"("|")"|"{"|"}"|"."|"->"|"*"|"+"|"-"|"~"|"!"|"%"|"<<"|">>"|"<"|">"|"<="|">="|":"|";"|"..."|"*="|"/="|"%="|"+="|"-="|"<<="|"#"|"--"|"&"|"=="|">>="|"!="|"&="|"^"|"|"|"^="|"&&"|"||"|"|="
 
 /*Comments*/
-
 SINGLE_LINE_COMMENT			        "//"[^("\n")]*
 MULTI_LINE_COMMENT			        \/\*([^\*]|(\*)+[^\/\*])*(\*)*\/
 WS 					                [ \t\n]
@@ -62,6 +58,7 @@ WS 					                [ \t\n]
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Translation Rules Section */
 %%
+
 "break"			                    { return BREAK; }
 "case"			                    { return CASE; }
 "char"		  	                    { return CHAR; }
@@ -149,5 +146,6 @@ WS 					                [ \t\n]
 {SINGLE_LINE_COMMENT}				{/*Do nothing, Ignore single line comments*/}
 {MULTI_LINE_COMMENT} 				{/*Do nothing, Ignore multi line comments*/}
 {WS}	                        	{/*Do nothing, Ignore white spaces*/ }
+
 %%
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/

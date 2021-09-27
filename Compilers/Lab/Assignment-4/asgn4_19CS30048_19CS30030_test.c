@@ -44,27 +44,27 @@ int Fibonacci(int n){
    Also testing multi-line comments */
 void main(void){
     // Testing all the arithmetic operations 
-    int a,b,c;
-    a=b+c;
-    a=b-c;
-    a=b*c;
-    a=b/c;
-    a+=b;
-    a-=b;
-    a*=b;
-    a/=b;
-    a=b<<c; a=b>>c; a=b>>(30); a=(30)<<a+b;
-    a=!b;
-    a=~b;
-    a%=b;
-    a=b^c;
-    a=b&c;
-    a=b&&c;
-    --a;
+    int a, b, c;
+    a = b + c;
+    a = b - c;
+    a = b * c;
+    a = b / c;
+    a += b;
+    a -= b;
+    a *= b;
+    a /= b;
+    a = b << c; a = b >> c; a = b >> (30); a = (30) << a + b ;
+    a =! b;
+    a =~ b;
+    a %= b;
+    a = b ^ c;
+    a = b & c;
+    a = b && c;
+    --a ;
     ++a;
-    a=(b)?b:c;
-    a&=b;
-    a|=b;
+    a = (b) ? b : c;
+    a &= b;
+    a |= b;
 
     var = 10;
 

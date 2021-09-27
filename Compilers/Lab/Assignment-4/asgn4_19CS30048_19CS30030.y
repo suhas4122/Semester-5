@@ -12,7 +12,9 @@
 %}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-%union {  int intval; }
+%union {  
+	int intval; 
+}
 
 %token BREAK CASE CHAR CONST CONTINUE DEFAULT DO DOUBLE ELSE EXTERN FLOAT FOR GOTO IF INT LONG RETURN RESTRICT SHORT SIZEOF STATIC STRUCT  
 %token SWITCH TYPEDEF UNION VOID VOLATILE WHILE IDENTIFIER INLINE INTEGER_CONSTANT FLOATING_CONSTANT CHARACTER_CONSTANT STRING_LITERAL
@@ -22,6 +24,11 @@
 %token SR_EQ BITWISE_AND_EQ BITWISE_XOR_EQ BITWISE_OR_EQ COMMA HASH 
 
 %start translation_unit
+
+// To remove the shift-reduce conflict 
+%nonassoc ROUND_BRACKET_CLOSE
+%nonassoc ELSE
+
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Grammar Productions */
 
