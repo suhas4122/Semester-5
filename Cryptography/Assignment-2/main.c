@@ -162,7 +162,6 @@ void key_schedule(const uint8_t *key, uint8_t *aeskeys, uint8_t *feistelkeys) {
     }
 
     for (i = 0; i < FEISTEL_ROUNDS/2; ++i) {
-        // k0-k3 for next round
         temp[3] = SBOX[*last4bytes++];
         temp[0] = SBOX[*last4bytes++];
         temp[1] = SBOX[*last4bytes++];
@@ -173,17 +172,14 @@ void key_schedule(const uint8_t *key, uint8_t *aeskeys, uint8_t *feistelkeys) {
         *feistelkeys++ = temp[1] ^ *lastround++;
         *feistelkeys++ = temp[2] ^ *lastround++;
         *feistelkeys++ = temp[3] ^ *lastround++;
-        // k4-k7 for next round        
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
-        // k8-k11 for next round
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
-        // k12-k15 for next round
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
         *feistelkeys++ = *last4bytes++ ^ *lastround++;
