@@ -16,8 +16,8 @@
 	int intval; 
 }
 
-%token BREAK CASE CHAR CONST CONTINUE DEFAULT DO DOUBLE ELSE EXTERN FLOAT FOR GOTO IF INT LONG RETURN RESTRICT SHORT SIZEOF STATIC STRUCT  
-%token SWITCH TYPEDEF UNION VOID VOLATILE WHILE IDENTIFIER INLINE INTEGER_CONSTANT FLOATING_CONSTANT CHARACTER_CONSTANT STRING_LITERAL
+%token BREAK CASE CHAR CONST CONTINUE DEFAULT DO DOUBLE ELSE EXTERN FLOAT FOR GOTO IF INT LONG RETURN RESTRICT SHORT SIZEOF STATIC STRUCT ENUM AUTO REGISTER BOOL COMPLEX IMAGINARY
+%token SWITCH TYPEDEF UNION VOID VOLATILE WHILE IDENTIFIER INLINE INTEGER_CONSTANT FLOATING_CONSTANT CHARACTER_CONSTANT STRING_LITERAL SIGNED UNSIGNED
 %token SQUARE_BRACKET_OPEN SQUARE_BRACKET_CLOSE ROUND_BRACKET_OPEN ROUND_BRACKET_CLOSE CURLY_BRACKET_OPEN CURLY_BRACKET_CLOSE 
 %token DOT ARROW INCREMENT DECREMENT BITWISE_AND MUL ADD SUB BITWISE_NOT EXCLAIM DIV MOD SHIFT_LEFT SHIFT_RIGHT LT GT LTE GTE 
 %token EQ NEQ BITWISE_XOR BITWISE_OR AND OR QUESTION COLON SEMICOLON ELIPSIS ASSIGN MUL_EQ DIV_EQ MOD_EQ ADD_EQ SUB_EQ SL_EQ  
@@ -244,6 +244,8 @@ init_declarator
 storage_class_specifier
 	: EXTERN
 	| STATIC
+	| AUTO
+	| REGISTER
 	  { printf("Rule: Declarations --> storage_class_specifier \n"); }
 	;
 
@@ -255,6 +257,12 @@ type_specifier
 	| LONG
 	| FLOAT
 	| DOUBLE
+	| SIGNED 
+	| UNSIGNED 
+	| BOOL 
+	| COMPLEX 
+	| IMAGINARY
+	| enum_specifier
 	  { printf("Rule: Declarations --> type_specifier \n"); }
 	;
 
@@ -267,6 +275,30 @@ specifier_qualifier_list
 specifier_qualifier_list_opt
 	: specifier_qualifier_list
 	| /*epsilon*/
+	;
+
+identifier_opt
+	: IDENTIFIER 
+	| /*epsilon*/
+	;
+
+enum_specifier
+	: ENUM identifier_opt CURLY_BRACKET_OPEN enumeration_list CURLY_BRACKET_CLOSE
+	| ENUM identifier_opt CURLY_BRACKET_OPEN enumeration_list COMMA CURLY_BRACKET_CLOSE 
+	| ENUM IDENTIFIER
+	  { printf("Rule: Declarations --> enum_specifier \n"); }
+	;
+
+enumeration_list
+	: enumerator 
+	| enumeration_list COMMA enumerator
+      { printf("Rule: Declarations --> enumeration_list \n"); }
+	;
+
+enumerator
+	: IDENTIFIER 
+	| IDENTIFIER EQ constant_expression
+	  { printf("Rule: Declarations --> enumerator \n"); }
 	;
 
 type_qualifier

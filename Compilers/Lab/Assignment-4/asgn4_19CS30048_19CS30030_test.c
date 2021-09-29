@@ -6,8 +6,11 @@
 
 extern int var;
 
+// Testing enum keyword
+enum weekends {Saturday, Sunday};
+
 // Function to perform termary search of a key in array ar
-int ternarySearch(int l, int r, int key, int ar[]){
+signed int ternarySearch(int l, int r, int key, int ar[]){
     if (r >= l){
         int mid1 = l + (r - l) / 3;
         int mid2 = r - (r - l) / 3;
@@ -33,7 +36,7 @@ int ternarySearch(int l, int r, int key, int ar[]){
 }
 
 // Brute force to compute Nth fibonacci number
-int Fibonacci(int n){
+unsigned int Fibonacci(int n){
     if (n <= 1) 
         return n; 
     return Fibonacci(n - 1) + Fibonacci(n - 2); 
@@ -43,6 +46,12 @@ int Fibonacci(int n){
 /* Main function of C code 
    Also testing multi-line comments */
 void main(void){
+
+    // Test few special keywords / datatypes 
+  	_Bool data1 = 1;
+    double _Complex data2 = 1 + 2*I;
+    double _Imaginary data3 = 3*I;
+
     // Testing all the arithmetic operations 
     int a, b, c;
     a = b + c;

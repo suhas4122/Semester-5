@@ -10,12 +10,12 @@
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Regular Expression Definitions */
 
-KEYWORD  "break"|"case"|"char"|"const"|"continue"|"default"|"do"|"double"|"else"|"extern"|"float"|"for"|"goto"|"if"|"int"|"inline"|"long"|"return"|"restrict"|"short"|"sizeof"|"static"|"struct"|"switch"|"typedef"|"union"|"void"|"volatile"|"while"
+KEYWORD  "break"|"case"|"char"|"const"|"continue"|"default"|"do"|"double"|"else"|"extern"|"float"|"for"|"goto"|"if"|"int"|"inline"|"long"|"return"|"restrict"|"short"|"sizeof"|"static"|"struct"|"switch"|"typedef"|"union"|"void"|"volatile"|"while"|"enum"
 
 /*Identifiers*/
 DIGIT					            [0-9]
 IDENTIFIER_NONDIGIT 			    [a-zA-Z_]
-IDENTIFIER_NONDIGIT					{IDENTIFIER_NONDIGIT}({IDENTIFIER_NONDIGIT}|{DIGIT})*
+IDENTIFIER							{IDENTIFIER_NONDIGIT}({IDENTIFIER_NONDIGIT}|{DIGIT})*
 
 /*Constants*/
 CONSTANT 				          	{INTEGER_CONSTANT}|{FLOATING_CONSTANT}|{CHARACTER_CONSTANT}
@@ -70,6 +70,8 @@ WS 					                [ \t\n]
 "else"			                    { return ELSE; }
 "extern"		                    { return EXTERN; }
 "float"			                    { return FLOAT; }
+"signed"							{ return SIGNED; }
+"unsigned"							{ return UNSIGNED; }
 "for"			                    { return FOR; }
 "goto"			                    { return GOTO; }
 "if"			                    { return IF; }
@@ -80,6 +82,9 @@ WS 					                [ \t\n]
 "restrict"		                    { return RESTRICT; }
 "short"			                    { return SHORT; }
 "sizeof"		                    { return SIZEOF; }
+"_Bool"								{ return BOOL; }
+"_Complex"							{ return COMPLEX; }
+"_Imaginary"						{ return IMAGINARY; }
 "static"		                    { return STATIC; }
 "struct"		                    { return STRUCT; }
 "switch"		                    { return SWITCH; }
@@ -88,6 +93,9 @@ WS 					                [ \t\n]
 "void"			                    { return VOID; }
 "volatile"		                    { return VOLATILE; }
 "while"			                    { return WHILE; }
+"enum"								{ return ENUM; }
+"auto" 								{ return AUTO; }
+"register"                          { return REGISTER; }
 
 {IDENTIFIER}		                { return IDENTIFIER;}
 {INTEGER_CONSTANT}                  { return INTEGER_CONSTANT;}
