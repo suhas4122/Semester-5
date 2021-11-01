@@ -23,14 +23,11 @@ void PrintArray(int arr[], int size)
 {
 	int i;
 
-
-
 	for(i = 0 ; i < size ; i++)
 	{
 		printInt(arr[i]);
 		printStr("\n");
 	}
-
 }
 
 int main()
@@ -41,7 +38,7 @@ int main()
 	printStr("\n********************* Bubble Sort ***********************\n");
     printStr("\nEnter the number of elements\n");
     
-    n=readInt(&err);
+    n = readInt(&err);
 	
 	printStr("\nEnter the elements of the array one by one i.e. use a new line for every element: \n"); 
     
@@ -60,5 +57,4 @@ int main()
 	
 	return 0;
 }
-
 
